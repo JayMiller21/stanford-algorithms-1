@@ -7,7 +7,6 @@ def merge_sorted_arrays(a,b)
   c = Array.new(n)
   i = 0
   j = 0
-  
   for k in 0..n-1
     if a[i].nil?
       c[k] = b[j]
@@ -30,17 +29,15 @@ end
 
 
 # Merge Sort
-# Assumes array is of even length
+# Seems to work on all array lengths except 0 or 1
 
 def merge_sort(array)
   n = array.length
   if n >= 2
     a = array[0..n/2-1]
     b = array[n/2..n-1]
-    if n >= 4
-      a = merge_sort(a)
-      b = merge_sort(b)
-    end
+    if a.length >= 2 then a = merge_sort(a) end
+    if b.length >= 2 then b = merge_sort(b) end
   end
   merge_sorted_arrays(a,b)
 end
